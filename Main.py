@@ -12,7 +12,7 @@ if __name__ == "__main__":
         input_text = ""
         input_label = tk.Label(
                 root,
-                text="test",
+                text="type something!",
                 font=("Arial", 40),
                 pady=10
         )
