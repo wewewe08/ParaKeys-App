@@ -1,19 +1,16 @@
 import tkinter as tk
-
-from InputWindow import InputWindow
-
-class Main(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
-        tk.Frame.__init__(self, parent, *args, **kwargs)
-        self.parent = parent
-        self.input_window = InputWindow(self.parent)
-
-        self.input_window.pack(side="top", fill="both")
+import pynput
+from pynput.keyboard import Listener
 
 if __name__ == "__main__":
+    
+
+    tk.Label(text="test", 
+            font=("Arial", 40),
+            pady=10).pack()
+
     root = tk.Tk()
     root.title("input-overlay")
     root.eval("tk::PlaceWindow . center") #centers window
 
-    app = Main(root)
     root.mainloop()
