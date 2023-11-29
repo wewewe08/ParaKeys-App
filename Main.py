@@ -1,46 +1,23 @@
 import tkinter as tk
 
+from MainWindow import MainWindow
+
+class MainApp(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
+        self.main_window = MainWindow(self.parent)
+        self.main_window.pack(side="top", fill="both")
+
 if __name__ == "__main__":
         root = tk.Tk()
         root.title("ParaKeys")
         root.iconbitmap("parakeet.ico")
-        root.eval("tk::PlaceWindow . center") #centers window
+        root.config(bg="#26242f")
+        root.geometry("270x180")
+        root.resizable(width=False, height=False)
 
-        global input_label, input_text
-
-        input_text = ""
-        input_label = tk.Label(
-                root,
-                text="type something!",
-                font=("Arial", 40),
-                pady=10
-        )
-        input_label.pack()
-
-        keys_pressed = set()
-        displayed_keys = set()
-
-        def on_press(event):
-                global input_text
-                current_key = event.keysym.upper()
-
-                if len(displayed_keys) > 0 and input_text != "":
-                        input_text = ""
-                        keys_pressed.clear()
-                        displayed_keys.clear()
-
-                if current_key not in keys_pressed:
-                        keys_pressed.add(current_key)
-                        input_text = current_key if input_text == "" else input_text + " + " + current_key
-
-        def on_release(event):
-                global input_label, input_text, displayed_keys
-                try:
-                        input_label["text"] = input_text
-                        displayed_keys.add(input_text)
-                except KeyError:
-                        pass
-
-        root.bind('<KeyPress>', on_press)
-        root.bind('<KeyRelease>', on_release)
+        app = MainApp(root)
+        root.bind('<KeyPress>', app.main_window.on_press)
+        root.bind('<KeyRelease>', app.main_window.on_release)
         root.mainloop()
