@@ -1,20 +1,45 @@
 import tkinter as tk
+from PIL import ImageTk, Image
 
 class MainWindow(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        global input_label, input_text, displayed_keys
+        # Title Label
+        img = ImageTk.PhotoImage(Image.open("parakeet.png"))
+        image_label = tk.Label(
+            self.parent,
+            image=img,
+            pady=20)
+        image_label.pack(side="left", anchor="n")
+        image_label.image = img
 
+        title_label = tk.Label(
+            self.parent,
+            text="ParaKeys",
+            font=("Arial", 40),
+            pady=20)
+        title_label.pack(side="top",  anchor="n")
+        
+        # Description
+        desc_label = tk.Label(
+            self.parent, 
+            text="Type something!", 
+            font=("Arial", 20),
+            pady=25)
+        desc_label.pack()
+
+        # Display Label
+        global input_label, input_text, displayed_keys
         input_text = ""
         displayed_keys = set()
         input_label = tk.Label(
                 self.parent,
-                text="type something!",
-                font=("Arial", 30),
+                text="{}",
+                font=("Arial", 20),
                 wraplength=300,
-                pady=10
+                pady=35
         )
         input_label.pack()
 

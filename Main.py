@@ -7,14 +7,13 @@ class MainApp(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.main_window = MainWindow(self.parent)
-
         self.main_window.pack(side="top", fill="both")
 
 if __name__ == "__main__":
         root = tk.Tk()
         root.title("ParaKeys")
         root.iconbitmap("parakeet.ico")
-        root.geometry("400x400")
+        root.geometry("400x300")
 
         app = MainApp(root)
         root.bind('<KeyPress>', app.main_window.on_press)
