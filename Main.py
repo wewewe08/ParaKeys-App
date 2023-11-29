@@ -1,10 +1,9 @@
-import time
 import tkinter as tk
-from queue import Queue
 
 if __name__ == "__main__":
         root = tk.Tk()
-        root.title("input-overlay")
+        root.title("ParaKeys")
+        root.iconbitmap("parakeet.ico")
         root.eval("tk::PlaceWindow . center") #centers window
 
         global input_label, input_text
