@@ -6,4 +6,4 @@
 - includes display of multiple keyboard inputs at the same time
 - displays stay on screen until a new input is pressed
 
-![2023-11-28 15-04-11 - Trim](https://github.com/wewewe08/input_overlay/assets/31106392/31ec1832-db34-49bf-b531-481dcdc1c816)
+[![2023-11-28 15-04-11 - Trim](https://github.com/wewewe08/input_overlay/assets/31106392/31ec1832-db34-49bf-b531-481dcdc1c816)](https://gyazo.com/e7e30ee55bf1b14c66b7084acde5f201)https://gyazo.com/e7e30ee55bf1b14c66b7084acde5f201
