@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from PIL import ImageTk, Image
 
 class MainWindow(tk.Frame):
@@ -7,7 +8,11 @@ class MainWindow(tk.Frame):
         self.parent = parent
 
         # Title Label
-        img = ImageTk.PhotoImage(Image.open("title_label.png"))
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        rel_path = "title_label.png"
+        abs_file_path = os.path.join(dir_path, rel_path)
+
+        img = ImageTk.PhotoImage(Image.open(abs_file_path))
         image_label = tk.Label(
             self.parent,
             image=img,
