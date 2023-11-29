@@ -5,14 +5,16 @@ from MainWindow import MainWindow
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
+        if getattr(sys, 'frozen', False):
+            path = os.path.dirname(sys.executable)
+        elif __file__:
+            path = os.path.dirname(__file__)
     except Exception:
-        base_path = os.path.abspath(".")
+        path = os.path.abspath(".")
 
-    return os.path.join(base_path, relative_path)
+    return os.path.join(path, relative_path)
 
-Logo = resource_path("parakeet.ico")
+Logo = resource_path("../parakeet.ico")
 
 class MainApp(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -24,7 +26,7 @@ class MainApp(tk.Frame):
 if __name__ == "__main__":
         root = tk.Tk()
         root.title("ParaKeys")
-        root.iconbitmap(Logo)
+        root.iconbitmap(bitmap=Logo)
         root.config(bg="#26242f")
         root.geometry("270x180")
         root.resizable(width=False, height=False)

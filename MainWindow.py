@@ -1,5 +1,5 @@
 import tkinter as tk
-import os
+import os,sys
 from PIL import ImageTk, Image
 
 class MainWindow(tk.Frame):
@@ -8,11 +8,21 @@ class MainWindow(tk.Frame):
         self.parent = parent
 
         # Title Label
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        rel_path = "title_label.png"
-        abs_file_path = os.path.join(dir_path, rel_path)
+        def resource_path(relative_path):
+                """ Get absolute path to resource, works for dev and for PyInstaller """
+                try:
+                        if getattr(sys, 'frozen', False):
+                                path = os.path.dirname(sys.executable)
+                        elif __file__:
+                                path = os.path.dirname(__file__)
+                except Exception:
+                        path = os.path.abspath(".")
 
-        img = ImageTk.PhotoImage(Image.open(abs_file_path))
+                return os.path.join(path, relative_path)
+
+        title_path = resource_path("../title_label.png")
+
+        img = ImageTk.PhotoImage(Image.open(title_path))
         image_label = tk.Label(
             self.parent,
             image=img,
