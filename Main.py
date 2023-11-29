@@ -13,7 +13,9 @@ if __name__ == "__main__":
         root = tk.Tk()
         root.title("ParaKeys")
         root.iconbitmap("parakeet.ico")
-        root.geometry("400x300")
+        root.config(bg="#26242f")
+        root.geometry("270x180")
+        root.resizable(width=False, height=False)
 
         app = MainApp(root)
         root.bind('<KeyPress>', app.main_window.on_press)

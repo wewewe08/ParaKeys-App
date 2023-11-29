@@ -7,28 +7,14 @@ class MainWindow(tk.Frame):
         self.parent = parent
 
         # Title Label
-        img = ImageTk.PhotoImage(Image.open("parakeet.png"))
+        img = ImageTk.PhotoImage(Image.open("title_label.png"))
         image_label = tk.Label(
             self.parent,
             image=img,
-            pady=20)
-        image_label.pack(side="left", anchor="n")
+            bg="#26242f",
+            pady=5)
+        image_label.pack(side="top", anchor="center")
         image_label.image = img
-
-        title_label = tk.Label(
-            self.parent,
-            text="ParaKeys",
-            font=("Arial", 40),
-            pady=20)
-        title_label.pack(side="top",  anchor="n")
-        
-        # Description
-        desc_label = tk.Label(
-            self.parent, 
-            text="Type something!", 
-            font=("Arial", 20),
-            pady=25)
-        desc_label.pack()
 
         # Display Label
         global input_label, input_text, displayed_keys
@@ -38,10 +24,11 @@ class MainWindow(tk.Frame):
                 self.parent,
                 text="{}",
                 font=("Arial", 20),
-                wraplength=300,
-                pady=35
-        )
-        input_label.pack()
+                bg="#26242f",
+                fg="white",
+                wraplength=180,
+                pady=10)
+        input_label.pack(side="top")
 
     def on_press(self, event):
         global input_text, displayed_keys
