@@ -6,4 +6,4 @@
 - includes display of multiple keyboard inputs at the same time
 - displays stay on screen until a new input is pressed
 
-![Uploading e7e30ee55bf1b14c66b7084acde5f201.gif…]()
+![](https://gyazo.com/e7e30ee55bf1b14c66b7084acde5f201)
